@@ -16,7 +16,7 @@ Other
 
 **Build Command:**
 ```
-npm run build
+cd frontend && npm install && npm run build
 ```
 
 **Output Directory:**
@@ -26,7 +26,7 @@ frontend/dist
 
 **Install Command:**
 ```
-npm install && cd backend && npm install
+cd backend && npm install
 ```
 
 ---
@@ -131,9 +131,9 @@ mongodb+srv://whitelabel_admin:MyP@ssw0rd123@cluster0.abc123.mongodb.net/white-l
 7. Configure:
    - Framework Preset: Other
    - Root Directory: ./
-   - Build Command: npm run build
+   - Build Command: cd frontend && npm install && npm run build
    - Output Directory: frontend/dist
-   - Install Command: npm install && cd backend && npm install
+   - Install Command: cd backend && npm install
 8. Add Environment Variables:
    - Click "Environment Variables"
    - Add each variable (see above)

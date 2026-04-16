@@ -15,7 +15,7 @@ Other
 
 ### Build Command
 ```
-npm run build
+cd frontend && npm install && npm run build
 ```
 
 ### Output Directory
@@ -25,7 +25,7 @@ frontend/dist
 
 ### Install Command
 ```
-npm install && cd backend && npm install
+cd backend && npm install
 ```
 
 ### Development Command (Optional)

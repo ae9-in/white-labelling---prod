@@ -5,9 +5,9 @@
 ```
 Framework Preset: Other
 Root Directory: ./
-Build Command: npm run build
+Build Command: cd frontend && npm install && npm run build
 Output Directory: frontend/dist
-Install Command: npm install && cd backend && npm install
+Install Command: cd backend && npm install
 ```
 
 ---

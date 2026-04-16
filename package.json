@@ -4,8 +4,8 @@
   "description": "White Label Admin - Operations Hub",
   "type": "module",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
-    "vercel-build": "cd frontend && npm install && npm run build",
+    "build": "cd frontend && npm run build",
+    "vercel-build": "cd frontend && npm run build",
     "start": "node backend/src/server.js",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev"

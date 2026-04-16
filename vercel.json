@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/dist"
+      }
+    },
+    {
+      "src": "backend/api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/cron/(.*)",
+      "dest": "/backend/api/cron/$1.js"
+    },
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "/backend/api/index.js"
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "/backend/uploads/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/v1/cron/update-reminders",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

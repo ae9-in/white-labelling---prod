@@ -1,35 +1,36 @@
 {
-  "version": 2,
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "cd frontend && npm install && npm run build && cd ../backend && npm install",
   "outputDirectory": "frontend/dist",
-  "installCommand": "cd backend && npm install",
-  "builds": [
+  "framework": null,
+  "functions": {
+    "backend/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
     {
-      "src": "backend/api/**/*.js",
-      "use": "@vercel/node"
+      "source": "/api/v1/(.*)",
+      "destination": "/backend/api/index.js"
     }
   ],
-  "routes": [
+  "headers": [
     {
-      "src": "/api/v1/cron/update-reminders",
-      "dest": "/backend/api/cron/update-reminders.js"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     },
     {
-      "src": "/api/v1/(.*)",
-      "dest": "/backend/api/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/v1/cron/update-reminders",
-      "schedule": "0 0 * * *"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

@@ -2,11 +2,18 @@
   "name": "white-label-admin",
   "version": "1.0.0",
   "description": "White Label Admin - Operations Hub",
+  "type": "module",
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
-    "vercel-build": "cd frontend && npm install && npm run build"
+    "vercel-build": "cd frontend && npm install && npm run build",
+    "start": "node backend/src/server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev"
   },
   "keywords": ["white-label", "admin", "operations"],
   "author": "White Label Admin",
-  "license": "PROPRIETARY"
+  "license": "PROPRIETARY",
+  "engines": {
+    "node": ">=18.x"
+  }
 }

@@ -1,0 +1,172 @@
+{
+  "info": {
+    "name": "White Label Admin API",
+    "description": "API collection for White Label Admin Dashboard",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "search", "value": "", "disabled": true},
+                {"key": "status", "value": "", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"Test Business\",\n  \"contactPersonName\": \"John Doe\",\n  \"phoneNumber1\": \"9876543210\",\n  \"email\": \"john@test.com\",\n  \"city\": \"Mumbai\",\n  \"status\": \"NEW\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers"]
+            }
+          }
+        },
+        {
+          "name": "Get Customer By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deliveries",
+      "item": [
+        {
+          "name": "Get All Deliveries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/deliveries?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["deliveries"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Delivery",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"CUSTOMER_ID_HERE\",\n  \"deliveryDate\": \"2026-04-16\",\n  \"deliveryStatus\": \"CREATED\",\n  \"notes\": \"Test delivery\",\n  \"items\": [\n    {\n      \"product\": \"Dhoop - 100g\",\n      \"quantity\": 10,\n      \"price\": 120\n    },\n    {\n      \"product\": \"Agarbatti\",\n      \"type\": \"Rose\",\n      \"quantity\": 20,\n      \"price\": 80\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/deliveries",
+              "host": ["{{baseUrl}}"],
+              "path": ["deliveries"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reminders",
+      "item": [
+        {
+          "name": "Get All Reminders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reminders?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["reminders"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "upcomingOnly", "value": "true", "disabled": true},
+                {"key": "overdueOnly", "value": "true", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Complete Reminder",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"completionNote\": \"Follow-up completed successfully\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reminders/:id/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["reminders", ":id", "complete"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/summary",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "summary"]
+            }
+          }
+        },
+        {
+          "name": "Get Upcoming Reminders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/upcoming-reminders?limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "upcoming-reminders"],
+              "query": [{"key": "limit", "value": "5"}]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
